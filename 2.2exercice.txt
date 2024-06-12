@@ -1,0 +1,196 @@
+### Exercise 1: Adding Columns and Basic Table Operations
+
+#### Task:
+
+1. Create a new table Library with the following columns:
+   - BookID (INT, Primary Key, Auto Increment)
+   - Title (VARCHAR(100), Not Null)
+   - Author (VARCHAR(50), Not Null)
+   - PublishedYear (INT)
+   - ISBN (VARCHAR(20), Unique)
+
+2. Insert sample data into the Library table:
+   
+   INSERT INTO Library (Title, Author, PublishedYear, ISBN) VALUES
+   ('The Great Gatsby', 'F. Scott Fitzgerald', 1925, '9780743273565'),
+   ('1984', 'George Orwell', 1949, '9780451524935'),
+   ('To Kill a Mockingbird', 'Harper Lee', 1960, '9780061120084');
+   
+
+3. Add a new column Genre to the Library table:
+   - Genre (VARCHAR(50))
+
+4. Modify the Title column to allow for longer titles. Change its size from VARCHAR(100) to VARCHAR(150).
+
+5. Update the PublishedYear for the book with BookID = 2 to 1950.
+
+6. Delete the book with BookID = 3.
+
+---
+
+### Exercise 2: Adding Columns and Constraints
+
+#### Task:
+
+1. Create the Student table with the following columns:
+   - StudentID (INT, Primary Key, Auto Increment)
+   - Name (VARCHAR(100), Not Null)
+   - Age (INT)
+   - Email (VARCHAR(100), Unique)
+   - EnrollmentDate (DATE)
+
+2. Create the Course table with the following columns:
+   - CourseID (INT, Primary Key, Auto Increment)
+   - CourseName (VARCHAR(100), Not Null)
+   - Credits (INT)
+
+3. Create the Enrollment table to represent the many-to-many relationship between Student and Course:
+   - EnrollmentID (INT, Primary Key, Auto Increment)
+   - StudentID (Foreign Key, References Student(StudentID))
+   - CourseID (Foreign Key, References Course(CourseID))
+   - EnrollmentDate (DATE)
+
+4. Insert sample data into the Student and Course tables:
+   
+   INSERT INTO Student (Name, Age, Email, EnrollmentDate) VALUES
+   ('Alice Johnson', 20, 'alice.johnson@example.com', '2024-01-01'),
+   ('Bob Smith', 22, 'bob.smith@example.com', '2024-01-01');
+
+   INSERT INTO Course (CourseName, Credits) VALUES
+   ('Mathematics', 3),
+   ('Physics', 4);
+   
+
+5. Add a column ClassroomID to the Course table to represent the room where the course is taught:
+   - ClassroomID (Foreign Key, References Classroom(ClassroomID))
+
+6. Establish foreign key relationships:
+   
+   ALTER TABLE Enrollment
+   ADD CONSTRAINT fk_student FOREIGN KEY (StudentID) REFERENCES Student(StudentID),
+   ADD CONSTRAINT fk_course FOREIGN KEY (CourseID) REFERENCES Course(CourseID);
+   
+
+7. Add a constraint to ensure that no student can enroll in the same course more than once:
+   
+   ALTER TABLE Enrollment
+   ADD CONSTRAINT uq_student_course UNIQUE (StudentID, CourseID);
+   
+
+8. Alter the Course table:
+   - Change the CourseName column from VARCHAR(100) to VARCHAR(150).
+
+9. Drop the Enrollment table if no longer needed:
+   
+   DROP TABLE IF EXISTS Enrollment;
+   
+
+10. Add a column CreditsEarned to the Student table:
+    - CreditsEarned (INT)
+
+---
+
+### Exercise 3: Complex Schema Design and Data Integrity
+
+#### Task:
+
+1. Create the Department table with the following columns:
+   - DepartmentID (INT, Primary Key, Auto Increment)
+   - DepartmentName (VARCHAR(100), Not Null)
+   - Location (VARCHAR(100))
+
+2. Create the Professor table with the following columns:
+   - ProfessorID (INT, Primary Key, Auto Increment)
+   - FirstName (VARCHAR(50), Not Null)
+   - LastName (VARCHAR(50), Not Null)
+   - Email (VARCHAR(100), Unique)
+   - HireDate (DATE)
+
+3. Create the Course table with the following columns:
+   - CourseID (INT, Primary Key, Auto Increment)
+   - CourseName (VARCHAR(100), Not Null)
+   - Credits (INT)
+   - DepartmentID (Foreign Key, References Department(DepartmentID))
+
+4. Create the Enrollment table to represent the many-to-many relationship between Student and Course:
+   - EnrollmentID (INT, Primary Key, Auto Increment)
+   - StudentID (Foreign Key, References Student(StudentID))
+   - CourseID (Foreign Key, References Course(CourseID))
+   - EnrollmentDate (DATE)
+
+5. Create the Classroom table with the following columns:
+   - ClassroomID (INT, Primary Key, Auto Increment)
+   - RoomNumber (VARCHAR(10), Not Null)
+   - Building (VARCHAR(50))
+
+6. Insert sample data into the Department, Professor, Course, Student, and Classroom tables:
+   
+   INSERT INTO Department (DepartmentName, Location) VALUES
+   ('Computer Science', 'Building A'),
+   ('Mathematics', 'Building B');
+
+   INSERT INTO Professor (FirstName, LastName, Email, HireDate) VALUES
+   ('John', 'Doe', 'john.doe@university.com', '2010-08-15'),
+   ('Jane', 'Smith', 'jane.smith@university.com', '2012-09-10');
+
+   INSERT INTO Course (CourseName, Credits, DepartmentID) VALUES
+   ('Algorithms', 4, 1),
+   ('Calculus', 3, 2);
+
+   INSERT INTO Student (Name, Age, Email, EnrollmentDate) VALUES
+   ('Alice Johnson', 20, 'alice.johnson@example.com', '2024-01-01'),
+   ('Bob Smith', 22, 'bob.smith@example.com', '2024-01-01');
+
+   INSERT INTO Classroom (RoomNumber, Building) VALUES
+   ('101', 'Science Building'),
+   ('202', 'Math Building');
+   
+
+7. Add the ClassroomID column to the Course table:
+   - ClassroomID (Foreign Key, References Classroom(ClassroomID))
+
+8. Establish relationships and constraints:
+   - Ensure that Course has a DepartmentID foreign key.
+   - Set ProfessorID as a foreign key in Course.
+
+9. Update and add data to reflect the new schema and relationships:
+   
+   ALTER TABLE Course
+   ADD COLUMN ClassroomID INT,
+   ADD CONSTRAINT fk_classroom FOREIGN KEY (ClassroomID) REFERENCES Classroom(ClassroomID),
+   ADD CONSTRAINT fk_department FOREIGN KEY (DepartmentID) REFERENCES Department(DepartmentID),
+   ADD CONSTRAINT fk_professor FOREIGN KEY (ProfessorID) REFERENCES Professor(ProfessorID);
+   
+
+10. Query the data:
+    - List all professors along with the courses they teach.
+    - List all students and their courses, along with the respective professors.
+
+---
+
+### Exercise 4: Advanced Schema Design and Data Integrity
+
+#### Task:
+
+1. Create the Department table with the following columns:
+   - DepartmentID (INT, Primary Key, Auto Increment)
+   - DepartmentName (VARCHAR(100), Not Null)
+   - Location (VARCHAR(100))
+
+2. Create the Professor table with the following columns:
+   - ProfessorID (INT, Primary Key, Auto Increment)
+   - FirstName (VARCHAR(50), Not Null)
+   - LastName (VARCHAR(50), Not Null)
+   - Email (VARCHAR(100), Unique)
+   - HireDate (DATE)
+
+3. Create the Course table with the following columns:
+   - CourseID (INT, Primary Key, Auto Increment)
+   - CourseName (VARCHAR(100), Not Null)
+   - Credits (INT)
+   - DepartmentID (Foreign Key, References Department(DepartmentID))
+
+4. Create the Enrollment table to represent the many-to-many relationship between Student and Course:
+   - EnrollmentID (INT, Primary Key, Auto Increment)
+   - StudentID (Foreign Key, References Student(StudentID))
+   - CourseID (Foreign Key, References Course(CourseID)

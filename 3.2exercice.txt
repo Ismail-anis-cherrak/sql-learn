@@ -1,0 +1,55 @@
+Soit la base de données relationnelles composée des relations suivantes :
+Equipe (IdEqui, Nom, Ville) IdEqui : Identifiant de l’équipe de football
+                            VILLE : la ville ou réside l’équipe
+
+Footballeur (IdFoot, Nom, Poste, DateDeb, Salaire, #IdEqui) Poste : Défenseur, Attaquant, etc
+
+            DateDeb : date du début de contrat avec son équipe
+            IdEqui : Identifiant de l’équipe de football
+
+Exprimer en SQL les requêtes suivantes :
+1. Donner les noms et les salaires des footballeurs.
+2. Donner les postes des footballeurs (après élimination des duplicatas).
+3. Donner les dates de début de contrat des défenseurs axiaux.
+4. Faire le produit cartésien entre footballeurs et équipes.
+5. Donner les noms des footballeurs et les noms de leurs équipes.
+6. Donner les numéros des footballeurs qui évoluent à Alger.
+7. Donner les noms des footballeurs des équipes 2 et 5, et dont le salaire est supérieur à 80000. Proposer trois solutions
+différentes.
+8. Donner les noms des footballeurs qui jouent à différents postes.
+9. Donner les noms des footballeurs dont la date de début de contrat est spécifiée.
+10. Afficher pour chaque footballeur la concaténation de son nom et son poste séparés par un espace en utilisant la fonction
+« concat » et lui donner comme libellé à l&#39;affichage &#39;&#39;Nom &amp; Poste&#39;&#39;
+11. Donner le nombre des footballeurs ;
+12. Donner le nombre des footballeurs qui ont été recrutés entre le 2013-01-01 et le 2017-12-31.
+13. Donner le nombre des attaquants évoluent a SBA.
+14. Donner le nombre de postes dans l’équipe de USM Alger.
+15. Donner le nom des footballeurs dont le nom commence par ‘a’ ;
+16. Donner le nombre des footballeurs dont le nom contient la chaine ‘abd’.
+17. Donner le nombre de noms contenant la chaine ‘abd’.
+18. Afficher la différence entre le salaire le plus élevé et le salaire le plus bas. Nommer le résultat « Différence ».
+
+
+19. Donner les noms des footballeurs qui évoluent dans une équipe avec au moins un ailier gauche.
+20. Donner le salaire et le nom des footballeurs gagnant plus qu’un (au moins un) défenseur.
+21. Donner le salaire et le nom des footballeurs gagnant plus que tous les défenseurs.
+22. Trouver les noms des footballeurs ayant la même équipe que Ahmed.
+23. Donner le nom et la date de début de contrat des footballeurs embauchés avant au moins un de leur défenseur ; donner
+également le nom et la date de début de contrat de leur défenseur.
+24. Donner les équipes qui n’ont pas d’ailier droit.
+25. Donner les noms des footballeurs de l’équipe JS Kabylie recruter le même jour qu’un footballeur de l’équipe MC
+Alger.
+26. Donner les noms des footballeurs rectruter avant tous les footballeurs de l’équipe 3.
+27. Donner les noms des footballeurs ayant le même poste que Ahmed.
+
+Valeurs Nulles, Tris, Groupes, Agrégats et Expressions
+
+28. Donner les noms, postes et salaires des footballeurs par poste croissant (du gardien de but à l’attaquant) et, pour chaque
+poste, par salaire décroissant.
+29. Donner le salaire moyen des footballeurs.
+30. Donner le nombre de footballeurs de l’équipe USM Bel Abbes.
+31. Donner les numéros des équipes et leur salaire maximum ?
+32. Donner les noms des footballeurs ayant le salaire maximum de chaque équipe.
+33. Donner les postes et leur salaire moyen
+34. Donner le salaire moyen le plus bas par poste
+35. Donner les postes ayant le salaire moyen le plus bas.

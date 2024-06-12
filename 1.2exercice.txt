@@ -1,0 +1,86 @@
+# Exercise
+
+1. Create a new database named SchoolDB.
+
+2. Create the following tables:
+   - Students
+     - StudentID (Primary Key, Auto Increment, Integer)
+     - FirstName (Variable Character, 50, Not Null)
+     - LastName (Variable Character, 50, Not Null)
+     - Email (Variable Character, 100, Unique)
+     - DateOfBirth (Date)
+   - Courses
+     - CourseID (Primary Key, Auto Increment, Integer)
+     - CourseName (Variable Character, 100, Not Null)
+     - Credits (Integer)
+   - Enrollments (To represent the many-to-many relationship between Students and Courses)
+     - EnrollmentID (Primary Key, Auto Increment, Integer)
+     - StudentID (Foreign Key, References Students(StudentID))
+     - CourseID (Foreign Key, References Courses(CourseID))
+     - EnrollmentDate (Date)
+
+3. Insert the following data into the tables:
+   - Students
+     - John, Doe, john.doe@school.com, 2000-05-15
+     - Jane, Smith, jane.smith@school.com, 2001-07-25
+     - Alice, Johnson, alice.johnson@school.com, 1999-12-05
+   - Courses
+     - Mathematics, 3
+     - Physics, 4
+     - Chemistry, 3
+   - Enrollments
+     - StudentID of John and CourseID of Mathematics, 2024-01-01
+     - StudentID of Jane and CourseID of Physics, 2024-01-01
+     - StudentID of Alice and CourseID of Chemistry, 2024-01-01
+
+4. Update John Doe's email to john.doe.new@school.com.
+
+5. Delete Jane Smith's enrollment in Physics.
+
+6. Select and display all records from the Students, Courses, and Enrollments tables.
+
+7. Describe the structure of the Enrollments table.
+
+
+
+### Advanced Exercise
+
+1. Add a new table called Teachers with the following columns:
+   - TeacherID (Primary Key, Auto Increment, Integer)
+   - FirstName (Variable Character, 50, Not Null)
+   - LastName (Variable Character, 50, Not Null)
+   - Email (Variable Character, 100, Unique)
+   - HireDate (Date)
+
+2. Add a new table called Classrooms with the following columns:
+   - ClassroomID (Primary Key, Auto Increment, Integer)
+   - RoomNumber (Variable Character, 10, Not Null)
+   - Building (Variable Character, 50)
+
+3. Modify the Courses table to include a foreign key to the Teachers table:
+   - Add a column TeacherID (Foreign Key, References Teachers(TeacherID))
+
+4. Modify the Enrollments table to include a foreign key to the Classrooms table:
+   - Add a column ClassroomID (Foreign Key, References Classrooms(ClassroomID))
+
+5. Insert the following data into the new tables:
+   - Teachers
+     - Michael, Brown, michael.brown@school.com, 2010-08-15
+     - Laura, Wilson, laura.wilson@school.com, 2012-09-10
+   - Classrooms
+     - 101, Science Building
+     - 202, Math Building
+
+6. Assign teachers to the existing courses:
+   - Mathematics taught by Laura Wilson
+   - Physics taught by Michael Brown
+   - Chemistry taught by Laura Wilson
+
+7. Assign classrooms to the existing enrollments:
+   - All enrollments of Mathematics in 101
+   - All enrollments of Physics in 202
+   - All enrollments of Chemistry in 101
+
+8. Select and display all records from the Teachers and Classrooms tables.
+
+9. Perform a join operation to list all students along with their enrolled courses, teachers, and classrooms.
